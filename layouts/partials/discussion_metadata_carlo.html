@@ -1,0 +1,58 @@
+{{ $is_list := .is_list }}
+{{ $page := .page }}
+
+<div class="article-metadata">
+
+	{{/* Discussant */}}
+
+	{{ if $page.Params.discussant }}		
+		<div class="pub-coauthors">    
+			<!-- {{ partial "authors_carlo" (dict "page" $page "is_list" 0) }} -->
+			{{ range $index, $value := $page.Params.discussant }}
+				{{- if gt $index 0 }}, {{ end -}}
+				{{ $value|markdownify }}
+			{{ end }}
+		</div>  
+	{{ end }}
+
+
+	<span class="article-date">		<!-- Insert date -->
+	{{ $date := $page.Date.Format (site.Params.publications.date_format | default "January, 2006") }}
+	<!-- Use Month Year format -->
+	{{ $page.Params.conference | markdownify }}
+	<span class="middot-divider"></span>
+	{{ $date }}	
+
+  
+  {{ if and (eq $is_list 1) (eq $page.Type "publication") }}	<!-- Add publication to the date, only if in a list -->
+  <span class="middot-divider"></span>
+  <span class="pub-publication">
+    {{ if $page.Params.publication_short }}
+      {{ $page.Params.publication_short | markdownify }}
+    {{ else if $page.Params.publication }}
+      {{ $page.Params.publication | markdownify }}
+    {{ end }}
+  </span>
+  {{ end }}
+
+
+  {{/* Show Disqus comment count if enabled. */}}
+  {{ $disqus_enabled := eq site.Params.comments.engine 1 | and (index site.Params.comments.commentable $page.Type) | and (ne $page.Params.commentable false) | or $page.Params.commentable }}
+  {{ if and $disqus_enabled (site.Params.comments.disqus.show_count | default true) }}
+  <span class="middot-divider"></span>
+  <a href="{{ $page.RelPermalink }}#disqus_thread"><!-- Count will be inserted here --></a>
+  {{ end}}
+
+  {{ $taxonomy := "categories" }}
+  {{ with $page.Param $taxonomy }}
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i>
+    {{- range $index, $value := . -}}
+      {{- if gt $index 0 }}, {{ end -}}
+      <a href="{{ (site.GetPage (printf "/%s/%s" $taxonomy (. | urlize))).RelPermalink }}">{{ . }}</a>
+    {{- end -}}
+  </span>
+  {{ end }}
+
+</div>

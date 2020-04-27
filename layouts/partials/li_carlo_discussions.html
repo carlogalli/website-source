@@ -1,0 +1,29 @@
+{{ $item := . }}
+<!-- 
+custom variable $item represents the current scope, which is the content of the index.md file of a single item
+ -->
+
+
+ <div class="carlo-item">
+
+	<div class="discussion-title">	
+		<!-- <a href="{{ .RelPermalink }}"> {{ $item.Title }} </a> -->
+		{{ $item.Title }}
+	</div>
+
+	<div class="carlo-coauthors">
+	{{ .Params.publications_types }}
+	{{- partial "authors_carlo" (dict "page" . "is_list" 1 "is_discussion" 1) -}}
+	<!-- {{partial "page_metadata_authors" .}} -->
+	</div>
+
+	<div class="pub-pubshort">
+		{{ $link := $item.Params.conference_link | relURL }}
+		<a href="{{ $link }}">
+			{{- $item.Params.conference | markdownify -}},
+			{{ dateFormat "January 2006" $item.Date}}
+		</a>
+	</div>
+
+	{{ partial "page_links" (dict "page" . "is_list" 0) }}
+</div>

@@ -1,0 +1,189 @@
+/*************************************************
+ *  Page content
+ **************************************************/
+
+/* taken from _content.scss */
+.article-container {
+  max-width: 960px;
+  padding: 0 20px 0 20px;
+  margin: 0 auto 0 auto;
+}
+
+/*.about-intro {*/
+	/*text-align: justify;*/
+/*}*/
+
+.navbar {
+	font-size: 1rem;
+}
+
+.btn.home {
+  line-height: 1;
+  font-size: 1em;  
+  padding: .5rem;
+  margin: 0 1em 0 0;
+}
+
+.btn {
+	margin-right: 0.25em;
+}
+
+/* Change default padding of Sections */
+.home-section {
+  padding: 50px 0 50px 0;  
+}
+
+.home-section:first-of-type {
+  padding-top: 50px;
+}
+
+
+/************************************************
+ *  Carlo List items (General)
+ **************************************************/
+.carlo-item {
+  margin-bottom: 2em;		/* Item bottom margin */
+  font-size: 0.9rem;		/* Absolute font size. All other font sizes are in proportion to this */
+}
+
+.carlo-item ul {    
+    /*margin-block-start: 0em;*/
+    margin-block-end: 0em;
+    /*margin-inline-start: -15px;*/
+    /*margin-inline-end: 0px;*/
+    /*padding-inline-start: 40px;*/
+}
+
+.carlo-item .carlo-coauthors a,
+.carlo-item .pub-pubshort a {
+	color: inherit;		
+}
+
+.carlo-item ::not(btl-links) a:hover {
+	color: $sta-link;
+	text-decoration: underline;
+	transition: none;
+}
+
+.carlo-item .carlo-coauthors {
+	font-size: 1em;	
+}
+
+.carlo-item .btn-links {
+  /*padding-top: 0.3rem;*/
+  margin-top: 0.3rem;
+}
+
+
+/* =============== Research =============== */
+.carlo-item .pub-title {
+	margin: 0 0 0 0;
+	font-size: 1.25em;
+}
+
+.carlo-item .pub-title a {
+  /*text-decoration: underline;*/
+  color: $sta-link;
+  /*font-weight: 700;*/
+}
+
+.carlo-item .pub-date {
+	/*font-style: italic;*/
+	/*font-weight: 700;*/
+}
+
+.carlo-item .pub-pubshort {
+	font-size: 1em;
+	font-weight: 400;
+	font-style: italic;
+}
+
+
+/* =============== Teaching, Discussions, General List =============== */
+.carlo-item .article-title {
+  font-size: 1.25em;
+  font-weight: 550;
+  /*color: #20c997;*/
+}
+
+.carlo-item .article-style {
+  margin-top: 0.3em;
+  font-size: 1em;
+  margin-bottom: 0.3em;
+}
+
+.carlo-item .item-meta {
+  margin-top: 12px;
+}
+
+.carlo-item .discussion-title {
+	margin: 0 0 0 0;
+	font-size: 1.25em;
+	color: $sta-link;
+}
+
+
+
+/************************************************
+ *  Carlo Page (General)
+ **************************************************/
+
+
+.carlo-page .article-metadata {
+	font-size: 1rem;	
+}
+
+.carlo-page .carlo-coauthors a {
+	/*color: inherit;*/
+	/*color: red;*/
+}
+
+.carlo-page h1 a {
+	color: inherit;
+}
+
+
+/* Research pages */
+.carlo-page .pub-publong ul {
+	list-style-type:none;
+	margin: 1rem 0 1rem 0;
+	padding: 0 0 0 0;
+	font-size: 1rem;
+	font-style: italic;
+}
+
+.carlo-page .article-date {
+}
+
+.carlo-page .pub-abstract {
+	text-align: justify;
+}
+
+
+/*************************************************
+ *  Footer
+ **************************************************/
+
+footer {
+  margin: 2rem 0 0;
+  padding: 1rem 0;
+  width: 100%;
+}
+
+
+/*************************************************
+ *  Footer
+ **************************************************/
+
+/* override the different margins for section-heading by bringing them back to what is in _root.scss */
+.section-heading h1 {
+  /*margin-top: 1rem;*/
+  /*margin-bottom: .5rem;*/
+  margin: 0 0 1rem 0;
+}
+
+.section-heading p {
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: #b2b2b2;
+}

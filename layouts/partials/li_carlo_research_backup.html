@@ -1,0 +1,37 @@
+<div class="carlo-pub-list-item">
+	<!-- Where is the class defined??? -->
+
+	<!-- <i class="far fa-file-alt pub-icon" aria-hidden="true"></i> -->
+	<!-- icon -->
+
+  <span class="pub-title">
+  	<a href="{{ .RelPermalink }}">{{ .Title }}</a>
+  </span>
+  
+  <span>
+  	<!-- if working paper, list month as well -->
+	{{ if eq (index .Params.publication_types 0) "3"}}
+		({{- .Date.Format "Jan 2006" -}})
+	{{ else }}
+		({{- .Date.Format "2006" -}})
+	{{ end }}  
+  </span>
+
+  <span class="article-metadata li-cite-author newline">
+    {{- partial "widgetpage_authors_carlo" . -}}
+    <!-- {{partial "page_metadata_authors" .}} -->
+  </span>
+
+  <span class="article-metadata newline">
+	{{ if .Params.publication_short }}
+		{{- .Params.publication_short | markdownify -}}
+	{{ else if .Params.publication }}
+		{{- .Params.publication | markdownify -}}
+	{{ end }}
+  </span>
+
+  <span class="newline">
+  {{ partial "page_links" (dict "page" . "is_list" 1) }}
+  </span>
+
+</div>

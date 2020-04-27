@@ -1,0 +1,33 @@
+{{ $is_list := .is_list }}
+{{ $page := .page }}
+{{ $link := "" }}
+
+{{/* ***** TODO: Deprecate `url_preprint` in favour of `url_pdf` given there's now a dedicated "Preprint" pub. type. ***** */}}
+
+{{ with $page.Params.url_preprint }}
+  {{ $resource := $page.Resources.GetMatch . }}
+  {{ if $resource }}
+    {{ $link = $resource.RelPermalink }}
+  {{ else }}
+    {{ $link = . | relURL }}
+  {{ end }}
+  <a class="btn btn-outline-primary my-1 mr-1{{ if $is_list }} btn-sm{{end}}" href="{{ $link }}" target="_blank" rel="noopener">
+  {{ i18n "btn_preprint" }}
+</a>
+{{ end }}
+
+
+{{ $resource := $page.Resources.GetMatch "cite.bib" }}
+{{ with $resource }}
+<button type="button" class="btn btn-outline-primary my-1 mr-1{{ if $is_list }} btn-sm{{end}} js-cite-modal" data-filename="{{ .RelPermalink }}">
+  {{ i18n "btn_cite" }}
+</button>
+{{ end }}
+
+{{ $resource := $page.Resources.GetMatch "abstract.tex" }}
+{{ with $resource }}
+  <button type="button" class="btn btn-outline-primary my-1 mr-1{{ if $is_list }} btn-sm{{end}} js-abstract-modal" data-filename="{{ .RelPermalink }}">
+  {{ i18n "btn_abstract" }}
+  </button>
+{{ end }}
+

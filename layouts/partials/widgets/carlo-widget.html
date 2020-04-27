@@ -1,0 +1,103 @@
+{{/* My Widget, mirrors the Page widget */}}
+
+{{/* Initialise */}}
+{{ $ := .root }}
+
+{{ $st := .page }}
+<!-- .page is the custom Markdown section (i.e. named "Posts", "Working Papers" etc) -->
+
+{{ $columns := $st.Params.design.columns | default "2" }}
+
+{{ $items_type := $st.Params.content.page_type | default "post" }}
+<!-- gets the custom Markdown section type (i.e. "post", "publication" or "talk" -->
+<!-- currently it is looking up posts -->
+
+{{/* Query */}}	
+<!-- defines lookup paths $query and $archive_page: -->
+
+{{ $query := where site.RegularPages "Type" $items_type }}
+<!-- Gets the index.md of all item folders inside the $items_type parent folder:
+Page(/post/writing-technical-content/index.md) -->
+
+{{ $archive_page := site.GetPage "Section" $items_type }}
+<!-- Gets the _index.md file inside the $items_type parent folder:
+Page(/post/_index.md) -->
+
+{{ if $st.Params.content.filters.publication_type }}
+  {{ $archive_page = site.GetPage (printf "publication_types/%s" $st.Params.content.filters.publication_type) }}
+  {{ $query = $query | intersect $archive_page.Pages }}
+{{ end }}
+<!-- Apply publication type filter, if present -->
+
+
+<div class="row">
+	{{ if ne $columns "1" }}			<!-- If 2 Columns -->
+		<div class="col-12 col-lg-4 section-heading">	<!-- Left Column -->
+		    <h1>{{ with $st.Title }}{{ . | markdownify | emojify }}{{ end }}</h1>
+		    
+		    {{ with $st.Params.subtitle }}
+		    <p>{{ . | markdownify | emojify }}</p>
+		    {{ end }}
+		    
+	  	</div>
+	  	
+		<div class="col-12 col-lg-8">	<!-- Right Column -->
+			{{ with $st.Content }}{{ . }}{{ end }}			
+			
+			{{ range $post := $query }}
+			<!-- iterates over $query, see explanation here
+			https://gohugo.io/templates/introduction/#example-2-declaring-a-variable-name-for-an-array-elements-value -->
+
+				<!-- 
+				calls the partial templates, applied to the index.md file of each item
+				-->				
+				<!-- {{ $post }} -->
+
+				{{ if eq $st.Params.design.view "teaching" }}					
+					{{ partial "li_carlo_teaching" . }}			  
+
+				{{ else if eq $st.Params.design.view "research" }}
+					{{ partial "li_carlo_research" . }}
+
+				{{ else if eq $st.Params.design.view "discussions" }}
+					{{ partial "li_carlo_discussions" . }}
+
+				{{ else }}
+					{{ partial "li_compact" . }}
+				{{ end }}			
+			{{end}}
+			
+			
+		</div>
+	{{ else }}
+		<div class="col-lg-12">			<!-- If 1 Column -->
+			<div class="section-heading">
+				<h1>{{ with $st.Title }}{{ . | markdownify | emojify }}{{ end }}</h1>
+			    {{ with $st.Params.subtitle }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
+			</div>
+			
+			{{ with $st.Content }}{{ . }}{{ end }}			
+			
+			{{ range $post := $query }}
+			<!-- iterates over $query, see explanation here
+			https://gohugo.io/templates/introduction/#example-2-declaring-a-variable-name-for-an-array-elements-value -->
+				
+				<!-- {{ $post }} -->
+
+				{{ if eq $st.Params.design.view "teaching" }}
+					<!-- {{ partial "li_list" . }} -->
+					{{ partial "li_carlo_teaching" . }}			  
+					<!-- 
+					calls the li_carlo formatting,
+					applied to the index.md file of each item
+					-->
+				{{ else if eq $st.Params.design.view "research" }}
+					{{ partial "li_carlo_research" . }}				
+				{{ else }}
+					{{ partial "li_compact" . }}
+				{{ end }}
+			{{end}}
+
+    	</div>
+  	{{ end }}
+</div>

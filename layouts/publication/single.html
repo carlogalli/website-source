@@ -1,0 +1,32 @@
+{{- define "main" -}}
+
+{{ $page := . }}
+<div class="carlo-page">
+
+	<div class="article-container pt-3">
+
+		<h1>{{ .Title }}</h1>		
+
+		{{ with $page.Params.subtitle }}
+		<p class="page-subtitle">{{ . | markdownify | emojify }}</p>
+		{{end}}
+
+		{{ partial "research_metadata_carlo.html" (dict "page" $page "is_list" 0 "share" true) }}
+
+
+		{{ partial "page_links" (dict "page" . "is_list" 0) }}
+
+
+	    {{ if .Params.abstract }}
+		<h3>{{ i18n "abstract" }}</h3>
+		<p class="pub-abstract">
+		{{ .Params.abstract | markdownify }}
+		</p>
+	    {{ end }}
+
+	    {{ partial "page_footer" . }}
+
+  </div>
+
+</div>
+{{- end -}}

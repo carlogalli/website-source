@@ -1,6 +1,6 @@
 ---
 # Display name
-name: Nelson Bighetti
+name: "Carlo Galli"
 
 # Username (this should match the folder name)
 authors:
@@ -10,50 +10,45 @@ authors:
 superuser: true
 
 # Role/position
-role: Professor of Artificial Intelligence
+role: ""
 
 # Organizations/Affiliations
-organizations:
-- name: Stanford University
-  url: ""
+organizations: 
+ - name: ""
+ - url: ""
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+# bio: My research interests include distributed robotics, mobile computing and programmable matter.
 
 interests:
-- Artificial Intelligence
-- Computational Linguistics
-- Information Retrieval
+- Macroeconomics
+- International Finance
+- Information Economics
 
 education:
   courses:
-  - course: PhD in Artificial Intelligence
-    institution: Stanford University
-    year: 2012
-  - course: MEng in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2009
-  - course: BSc in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2008
+  - course: PhD in Economics
+    institution: University College London
+    year: 2020
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
 #   For an email link, use "fas" icon pack, "envelope" icon, and a link in the
-#   form "mailto:your-email@example.com" or "#contact" for contact widget.
-social:
+#   form "mailto:carlo.galli.14@ucl.ac.uk" or "#contact" for contact widget.
+
+social: 
 - icon: envelope
   icon_pack: fas
-  link: '#contact'  # For a direct email link, use "mailto:test@example.org".
+  link: "mailto:carlo.galli.14@ucl.ac.uk"  # For a direct email link, use "mailto:carlo.galli.14@ucl.ac.uk".
 - icon: twitter
   icon_pack: fab
-  link: https://twitter.com/GeorgeCushen
+  link: https://twitter.com/carlogalli6
 - icon: google-scholar
   icon_pack: ai
-  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+  link: https://scholar.google.co.uk/citations?user=pTL93f0AAAAJ&hl=en
 - icon: github
   icon_pack: fab
-  link: https://github.com/gcushen
+  link: https://github.com/carlogalli
 # Link to a PDF of your resume/CV from the About widget.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
 # - icon: cv
@@ -65,11 +60,20 @@ email: ""
 
 # Organizational groups that you belong to (for People widget)
 #   Set this to `[]` or comment out if you are not using People widget.
-user_groups:
-- Researchers
-- Visitors
+# user_groups:
+# - Researchers
+# - Visitors
+
+# Links to navigation pages
+url_researchpage: "research_page/"
+
 ---
+Welcome! 
 
-Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+I am a macroeconomist with interests in international finance and information economics.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
+Next Fall, I will be a Postdoctoral Fellow at the Department of Economics of [SciencesPo](https://www.sciencespo.fr/department-economics/en.html).
+
+In Fall 2021, I will join [Universidad Carlos III de Madrid](http://economics.uc3m.es/) as an Assistant Professor in the Department of Economics.
+
+I obtained my PhD in 2020 from [UCL](http://www.ucl.ac.uk/economics) and I am a member of the [Centre for Macroeconomics](http://www.centreformacroeconomics.ac.uk/Home.aspx). 

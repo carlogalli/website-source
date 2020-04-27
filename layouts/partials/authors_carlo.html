@@ -1,0 +1,50 @@
+{{/* Display co-authors list. */}}
+
+{{ $is_list := .is_list }}
+{{ $page := .page }}
+{{- $taxonomy := "authors" }}
+
+{{$len := len $page.Params.authors}}
+{{ $li := sub $len 1}}
+
+{{ $prep := "with" }}
+{{ if .is_discussion }} {{ $prep = "by" }} {{ end }}
+
+
+{{ if $is_list }}		<!-- Widget page, only display Co-authors -->
+	{{ if gt $len 1 }}
+		{{ with $page.Param $taxonomy }}
+			{{ $link_authors := site.Params.link_authors | default true }}
+
+			{{- $prep | markdownify -}}
+			<!-- {{ . }} -->
+			{{ range $index, $value := . }}
+				{{- if ne $value "Carlo Galli"}}
+			    	{{- $profile_page := site.GetPage (printf "/%s/%s" $taxonomy (. | urlize)) -}}
+			    	{{- $name := ($value|markdownify) -}}
+				    {{- if and (gt $index 0) (lt $index $li) }}, 
+				    {{ else if eq $index $li }} and
+			    	{{ end -}}
+					    <span>
+					      {{- $name -}}
+					    </span>
+					{{- end -}}					
+				{{- end -}}
+		{{- end -}}
+	{{ end }}
+{{ else }}				<!-- Single page, display all authors -->
+	{{ with $page.Param $taxonomy }}
+			{{ $link_authors := site.Params.link_authors | default true }}
+
+			{{ range $index, $value := . }}
+			    	{{- $profile_page := site.GetPage (printf "/%s/%s" $taxonomy (. | urlize)) -}}
+			    	{{- $name := ($value|markdownify) -}}
+				    {{- if and (gt $index 0) (lt $index $li) }}, 
+				    {{ else if eq $index $li }} and
+			    	{{ end -}}
+					    <span>
+					      {{- $name -}}
+					    </span>
+					{{- end -}}
+		{{- end -}}
+{{ end }}
