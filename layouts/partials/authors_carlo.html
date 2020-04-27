@@ -40,7 +40,7 @@
 			    	{{- $profile_page := site.GetPage (printf "/%s/%s" $taxonomy (. | urlize)) -}}
 			    	{{- $name := ($value|markdownify) -}}
 				    {{- if and (gt $index 0) (lt $index $li) }}, 
-				    {{ else if eq $index $li }} and
+				    {{ else if and (eq $index $li) (gt $len 1) }} and
 			    	{{ end -}}
 					    <span>
 					      {{- $name -}}
