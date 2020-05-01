@@ -1,0 +1,31 @@
+# Theme metadata
+name = "Forest"
+
+# Is theme light or dark?
+light = true
+
+
+# Some colors and old defaults
+# hsl(175, 64, 37)    -> emerald_dark_green 
+# hsl(175, 65, 10)    -> much darker, can use for menu_text_active
+# hsl(176, 60, 50)    -> medium green/blue
+# hsl(172, 99, 54)    -> fluo light green
+# hsl(122, 39, 49)    -> default plain green ("#4caf50")
+# hsl(60, 100, 50)    -> default yellow
+# menu_text_active = "#1b5e20"  -> default
+
+# Primary
+primary = "hsl(175, 65, 43)"
+
+# Menu
+menu_primary = "hsl(175, 65, 43)"
+menu_text = "#fff"
+menu_text_active = "hsl(60, 100, 50)"
+menu_title = "#fff"
+
+# Home sections
+home_section_odd = "rgb(255, 255, 255)"
+home_section_even = "rgb(247, 247, 247)"
+
+
+

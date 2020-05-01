@@ -82,7 +82,9 @@
 		        {{ end }}
 
 				{{/* Get active page. */}}
-				{{ $is_link_in_current_path := in $current_page.RelPermalink .URL }}
+				<!-- {{ $is_link_in_current_path := in $current_page.RelPermalink .URL }} -->
+				{{ $is_link_in_current_path := eq (path.Dir $current_page.RelPermalink) (path.Dir (.URL|relLangURL)) }}
+
 				{{ $is_widget_page := or $current_page.IsHome (eq $current_page.Type "widget_page") }}
 				{{ $hash := findRE "#(.+)" .URL }}
 				{{ $is_same_page := $is_link_in_current_path }}
@@ -96,14 +98,17 @@
 				{{ end }}
 
 		        <li class="nav-item">
-		        	<!-- displays the actual navbar links -->
-					<a class="nav-link {{if $is_link_in_current_path }} active{{end}}" href="{{.URL | relLangURL}}"{{ if and $is_widget_page $is_same_page }} data-target="	{{$hash}}"{{ end }}{{ ($.Scratch.Get "target") | safeHTMLAttr }}>
-						{{- .Pre -}}<span>{{ .Name | safeHTML }}</span>{{- .Post -}}
-					</a>
-		        </li>
+		          <a class="nav-link {{if $is_link_in_current_path }} active{{end}}" href="{{.URL | relLangURL}}"{{ if and $is_widget_page $is_same_page }} data-target="{{$hash}}"{{ end }}{{ ($.Scratch.Get "target") | safeHTMLAttr }}>
+		            {{- .Pre -}}<span>{{ .Name | safeHTML }}</span>{{- .Post -}}
+		          </a>
+		          <!-- {{ $is_link_in_current_path }} -->
+		          <!-- {{ eq $current_page.RelPermalink .URL }} -->
+		          <!-- {{ eq (path.Dir $current_page.RelPermalink) (path.Dir (.URL|relLangURL)) }} -->
+        		</li>
 
 	        {{ end }}
         {{ end }}
+        
 
 	{{ if site.Menus.main_right | and (eq $align_menu "l") }}
 		</ul>

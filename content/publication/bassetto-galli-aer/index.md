@@ -45,10 +45,6 @@ tags:
 
 featured: false
 
-# Example of custom link:
-# links:
-# - name: ciao
-#   url: https://www.journals.elsevier.com/journal-of-international-economics
 
 url_pdf: https://www.aeaweb.org/articles?id=10.1257/aer.20170721
 url_code: ''
@@ -58,6 +54,11 @@ url_project: ''
 url_slides: "files/slides_OXNYC.pdf"
 url_source: ''
 url_video: ''
+
+# CONSIDER ADDING ONLINE APPENDIX AND UNGATED VERSION IF AEA RE-CLOSES ACCESS
+# links:
+# - name: ciao
+#   url: https://www.journals.elsevier.com/journal-of-international-economics
 
 
 # Featured image
